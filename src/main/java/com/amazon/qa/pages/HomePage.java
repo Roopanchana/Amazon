@@ -29,8 +29,8 @@ public class HomePage extends TestBase  {
 	public LoginPage login()
 	{
 
-	loginfield.click();
-	return new LoginPage();
+		loginfield.click();
+		return new LoginPage();
 
 
 

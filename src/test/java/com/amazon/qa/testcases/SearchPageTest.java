@@ -1,13 +1,12 @@
 package com.amazon.qa.testcases;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
 
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.amazon.qa.base.TestBase;
@@ -25,14 +24,14 @@ public class SearchPageTest extends TestBase{
 	SearchPage searchPage;
 	ProductPage productPage;
 	
-	FileInputStream fileInput1;
+	//FileInputStream fileInput1;
 	
 	public SearchPageTest()
 	{
 		super();
 	}
 	
-	@BeforeTest
+	@BeforeMethod
 	public void setUp() 
 	{
 		initialization();
@@ -73,7 +72,7 @@ public class SearchPageTest extends TestBase{
 	}
 	
 	
-	@AfterTest
+	@AfterMethod
 	public void tearDown()
 	{
 		driver.quit();

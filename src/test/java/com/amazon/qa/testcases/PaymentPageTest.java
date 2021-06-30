@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.amazon.qa.base.TestBase;
@@ -30,7 +30,7 @@ public class PaymentPageTest extends TestBase
 		super();
 	}
 	
-	@BeforeTest
+	@BeforeMethod
 	public void setUp() throws InterruptedException
 	{
 		initialization();
@@ -58,32 +58,37 @@ public class PaymentPageTest extends TestBase
 		paymentPage = productPage.productBuyNow();
 	}
 	
+	
+	
 	@Test(priority=1)
-	public void paymentProcess() throws IOException, InterruptedException 
+	public void verifyHeadingTest() throws InterruptedException
+	{
+
+	Thread.sleep(5000);
+	Assert.assertTrue(paymentPage.verefypagePageHeading());
+	log.debug("Another payment heading verification");
+
+	}
+	
+	
+	@Test(priority=2)
+	public void paymentProcess() throws  InterruptedException, IOException 
 	{
 		paymentPage.paymentStep();
 		log.debug("Payment process");
-	}
-	
-	@Test(priority=2)
-	public void popupModalWindow() throws IOException 
-	{
-		
-		driver.switchTo().frame(0);
 		Map<String,String>testData = AmazonUtil.getMap();
 		paymentPage.popupStep(testData.get("Card Number"));
 		log.debug("Entering Card Number");
-	}
-	
-	@Test(priority=3)
-	public void invalCard()
-	{
 		String message=paymentPage.invalidCardNumber();
 		Assert.assertEquals(message, "Card number is not correct.","Valid Number");
 		log.debug("Card validation");
 	}
 	
-	@AfterTest
+	
+	
+
+	
+	@AfterMethod
 	public void tearDown()
 	{
 		driver.quit();

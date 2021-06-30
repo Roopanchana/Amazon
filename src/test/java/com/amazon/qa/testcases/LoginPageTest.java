@@ -2,8 +2,8 @@ package com.amazon.qa.testcases;
 
 import java.io.IOException;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.amazon.qa.base.TestBase;
@@ -26,19 +26,19 @@ public class LoginPageTest extends TestBase{
 
 
 
-	@BeforeTest
+	@BeforeMethod
 	public void setUp()
 	{
 	initialization();
 	
-	homePage= new HomePage();
-	loginPage= new LoginPage();
-	searchPage = new SearchPage();
-	loginPage = homePage.login();
-	
-
+		homePage= new HomePage();
+		loginPage= new LoginPage();
+		searchPage = new SearchPage();
+		loginPage = homePage.login();
 
 	}
+	
+	
 	@Test(priority=1)
 	public void PageTitleVerification()
 	{
@@ -56,7 +56,7 @@ public class LoginPageTest extends TestBase{
 		log.debug("Login Process");
 	}
 	
-	@AfterTest
+	@AfterMethod
 	public void tearDown()
 	{
 		driver.quit();

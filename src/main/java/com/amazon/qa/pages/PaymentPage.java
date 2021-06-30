@@ -19,7 +19,7 @@ public class PaymentPage extends TestBase{
 	WebElement modal;
 	
 	//cardNumberField
-	@FindBy(xpath=".//input[@type='tel']")
+	@FindBy(xpath="//input[@type='tel']")
 	WebElement cardNumberField;
 	
 	@FindBy(xpath=".//input[@class='a-button-input']")
@@ -28,12 +28,21 @@ public class PaymentPage extends TestBase{
 	@FindBy(xpath="//span[text()='Card number is not correct.']")
 	WebElement invalidCardMessage;
 	
+	@FindBy(xpath="//div[@class='a-spacing-base']")
+	WebElement deliveryOption;
 	
 	
 	
 	public  PaymentPage()
 	{
 	PageFactory.initElements(driver, this);
+	}
+	
+	public boolean verefypagePageHeading() throws InterruptedException
+	{
+
+		Thread.sleep(5000);
+		return deliveryOption.isDisplayed();
 	}
 	
 	public String paymentStep() throws InterruptedException
@@ -51,7 +60,7 @@ public class PaymentPage extends TestBase{
 	
 	public String popupStep(String cno) 
 	{
-		
+		driver.switchTo().frame(0);
 		cardNumberField.click();
 		cardNumberField.sendKeys(cno);
 		submitCardNumber.click();
@@ -62,6 +71,7 @@ public class PaymentPage extends TestBase{
 	
 	public String invalidCardNumber()
 	{
+		
 		String sr="";
 		if(driver.findElements(By.xpath("//span[text()='Card number is not correct.']")).size()<10)
 		{

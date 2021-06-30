@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.amazon.qa.base.TestBase;
@@ -31,7 +31,7 @@ public class ProductPageTest extends TestBase
 	super();
 	}
 	
-	@BeforeTest
+	@BeforeMethod
 	public void setUp() throws InterruptedException
 	{
 		initialization();
@@ -100,10 +100,10 @@ public class ProductPageTest extends TestBase
 		log.debug("Entering in to payment page");
 	}
 	
-	@AfterTest
+	@AfterMethod
 	public void tearDown()
 	{
-		//driver.quit();
+		driver.quit();
 	}
 
 }

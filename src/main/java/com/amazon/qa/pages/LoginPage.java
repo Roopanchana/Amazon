@@ -41,12 +41,12 @@ public class LoginPage extends TestBase{
 	
 	public SearchPage login(String un, String pwd ) 
 	{
-	username.sendKeys(un);
-	submitButton.click();
-	password.sendKeys(pwd);
-	submitButton1.click();
+		username.sendKeys(un);
+		submitButton.click();
+		password.sendKeys(pwd);
+		submitButton1.click();
 	
-	return new SearchPage();
+		return new SearchPage();
 
 
 
